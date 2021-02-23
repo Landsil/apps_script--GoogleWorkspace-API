@@ -26,6 +26,7 @@ function downloadUsers() {
     customer: 'my_customer',
     maxResults: 50,
     orderBy: 'email',
+//    query: 'orgUnitPath=/',
     pageToken: pageToken
   });
 
