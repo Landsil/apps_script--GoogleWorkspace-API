@@ -26,7 +26,7 @@ function downloadUsers() {
     customer: 'my_customer',
     maxResults: 50,
     orderBy: 'email',
-//    query: 'orgUnitPath=/',
+//    query: 'orgUnitPath=/xxx',      // https://developers.google.com/admin-sdk/directory/v1/guides/search-users
     pageToken: pageToken
   });
 
