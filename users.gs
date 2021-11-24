@@ -54,6 +54,14 @@ function downloadUsers() {
         //AUTO_users.getRange(index + lastRow + i, 8).setValue(data[i].thumbnailPhotoUrl);
         var Pronoun = (data[i] && data[i].customSchemas && data[i].customSchemas.Info && data[i].customSchemas.Info.Gender_pronoun)||""; AUTO_users.getRange(index + lastRow + i, 8).setValue(Pronoun);
         var Building = (data[i] && data[i].locations && data[i].locations.buildingId)||""; AUTO_users.getRange(index + lastRow + i, 9).setValue(Building);
+        AUTO_users.getRange(index + lastRow + i, 10).setValue(data[i].lastLoginTime);
+        AUTO_users.getRange(index + lastRow + i, 11).setValue(data[i].isAdmin);
+        AUTO_users.getRange(index + lastRow + i, 12).setValue(data[i].isDelegatedAdmin);
+        AUTO_users.getRange(index + lastRow + i, 13).setValue(data[i].isEnrolledIn2Sv);
+        AUTO_users.getRange(index + lastRow + i, 14).setValue(data[i].isEnforcedIn2Sv);
+        AUTO_users.getRange(index + lastRow + i, 15).setValue(data[i].suspended);
+        AUTO_users.getRange(index + lastRow + i, 16).setValue(data[i].aliases);
+       
       }
       index += 50;
     } else {
