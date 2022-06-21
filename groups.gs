@@ -1,5 +1,10 @@
-//*******************************************************************************************************************************************
-// Pulls Groups data from G Suite
+/******************************************************************************************************************
+
+
+
+
+*/
+// Pulls Groups data from Workspace
 function downloadGroups() {
   var pageToken;
   var page;
@@ -9,11 +14,13 @@ function downloadGroups() {
   var AUTO_groups = SpreadsheetApp.setActiveSheet(ss.getSheetByName('AUTO_groups'));
   
   // Clear content except header all the way to "K" column. TODO make it find cells with content and cleare those.
-  AUTO_groups.getRange('A2:K').clear();
+  AUTO_groups.getRange('A2:F').clear();
   
   // This decided where to post. Starts after header.
-  var lastRow = Math.max(AUTO_groups.getRange(2, 1).getLastRow(),1);
-  var index = 0;
+  var column = AUTO_groups.getRange('A1:A').getValues();
+  var lastRow = column.filter(String).length;
+  var lastColumn = AUTO_groups.getLastColumn();
+  var index = 1;
   do {
     page = AdminDirectory.Groups.list({
       customer: 'my_customer',
@@ -27,7 +34,14 @@ function downloadGroups() {
         var group = groups[i];
         AUTO_groups.getRange((index + lastRow + i), 1).setValue(group.name);
         AUTO_groups.getRange((index + lastRow + i), 2).setValue(group.email);
-        var aliases = (group.aliases)||""; AUTO_groups.getRange((index + lastRow + i), 3).setValue(aliases);  // TODO fix to show all aliases
+        AUTO_groups.getRange((index + lastRow + i), 3).setValue(group.directMembersCount);
+        AUTO_groups.getRange((index + lastRow + i), 4).setValue(group.description);
+
+
+        var aliases = (group.aliases || []).join(', '); 
+        AUTO_groups.getRange((index + lastRow + i), 5).setValue(aliases);  // TODO fix to show all aliases
+
+
         
       }
       index += 50;
