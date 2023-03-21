@@ -11,8 +11,6 @@ function downloadChromeOS() {
   // Position in sheet
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var AUTO_ChromeOS = SpreadsheetApp.setActiveSheet(ss.getSheetByName('AUTO_ChromeOS'));
-  
-  // Clear content except header all the way to "K" column. TODO make it find cells with content and cleare those.
   AUTO_ChromeOS.getRange('A2:Z').clear();
   
   // This decided where to post. Starts after header.
@@ -59,7 +57,6 @@ function downloadChromeOS() {
         var lastSync = (data[i] && data[i].lastSync)||""; AUTO_ChromeOS.getRange(index + lastRow + i, 15).setValue(lastSync);
         var macAddress = (data[i] && data[i].macAddress)||""; AUTO_ChromeOS.getRange(index + lastRow + i, 16).setValue(macAddress);
         var ethernetMacAddress = (data[i] && data[i].ethernetMacAddress)||""; AUTO_ChromeOS.getRange(index + lastRow + i, 17).setValue(ethernetMacAddress);
-        
         
         //debug >> Full answer
         // AUTO_ChromeOS.getRange(index + lastRow + i, 10).setValue(params);
