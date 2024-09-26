@@ -1,6 +1,6 @@
 // Related to
 // https://github.com/gorhill/uBlock/wiki/Deploying-uBlock-Origin
-// http://raymondhill.net/ublock/adminSetting.html
+// https://github.com/uBlockOrigin/uBlock-issues/discussions/1834
 
 
 /* 1. Save the script ( this one is self supporting at the moment, doesn't require main.gs from repository https://github.com/Landsil/apps_script--GSuite_API )
